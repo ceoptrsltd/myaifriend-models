@@ -46,13 +46,11 @@ Release [`asr-2026-11-22`](https://github.com/ceoptrsltd/myaifriend-models/relea
 sha256 `1973d784e13896bb15379f4faa8feb8aaba48c6266f5c6b1833799dfc39c136c`. Same layout as above. Used by the Commander Flow Voice Keyboard for English.
 
 The same recipe applied to [NVIDIA Parakeet TDT 0.6B v2](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2).
-Unlike Ultra, v2 loses nothing measurable in sherpa-onnx's all-int8 package, so this package is about speed.
 Measured with sherpa-onnx 2.0.2, modified beam search with 2 active paths and length reward 0.5, 4 threads:
 
 | | sherpa-onnx int8 | this package |
 |---|---|---|
-| FLEURS English, 60 clips, WER | 4.48 % | 4.72 % |
-| the same clips at -55 dBFS | 4.48 % | 4.32 % |
+| FLEURS English test, all 637 recordings of 2–20 s, WER | 4.94 % | 4.72 % |
 | 32 long dictations with pauses (2,819 words), cut at 0.7 s pauses | 6.56 % | 6.63 % |
 | real-time factor, x86-64 laptop | 0.150 | 0.079 |
 | 20 s of speech, Snapdragon 7s Gen 2 phone | 0.81–0.88 s | 0.64–0.69 s |
